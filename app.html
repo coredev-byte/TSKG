@@ -601,6 +601,52 @@ td:first-child {
 .fs option { background:#f5f1eb; color:#1c1a17 }
 .fa-btns { display:flex; gap:7px; align-items:flex-end }
 
+
+/* ── MONTH PICKER ── */
+.mpick {
+  display:flex; align-items:center; gap:0;
+  background:var(--surface); border:1px solid var(--b1);
+  border-radius:var(--r2); overflow:hidden;
+  box-shadow:var(--shadow-sm); flex-shrink:0;
+  height:32px;
+}
+.mpick-arr {
+  width:28px; height:32px; border:none; background:transparent;
+  color:var(--tx3); cursor:pointer; display:flex;
+  align-items:center; justify-content:center;
+  transition:all .14s; flex-shrink:0;
+}
+.mpick-arr:hover { background:var(--em-a); color:var(--em) }
+.mpick-arr svg { width:12px; height:12px; stroke-width:2.2 }
+.mpick-label {
+  font-family:var(--font-mono); font-size:11px; font-weight:500;
+  color:var(--tx1); padding:0 10px; white-space:nowrap;
+  min-width:90px; text-align:center; letter-spacing:.3px;
+  cursor:pointer; transition:color .14s;
+}
+.mpick-label:hover { color:var(--em) }
+.mpick-label select {
+  display:none;
+}
+.mpick-bar {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; margin-bottom:14px; flex-wrap:wrap;
+}
+.mpick-bar-left { display:flex; align-items:center; gap:8px; flex:1 }
+.mpick-badge {
+  font-family:var(--font-mono); font-size:9px; letter-spacing:.8px;
+  text-transform:uppercase; padding:3px 9px; border-radius:5px;
+  background:var(--em-a); color:var(--em); border:1px solid var(--em-b);
+}
+.dash-mpick-row {
+  display:flex; align-items:center; gap:12px; margin-bottom:14px;
+  flex-wrap:wrap;
+}
+.dash-mpick-label {
+  font-family:var(--font-mono); font-size:9.5px; color:var(--tx3);
+  letter-spacing:.5px; text-transform:uppercase;
+}
+
 /* ── EMPTY ── */
 .er td { text-align:center; padding:44px; color:var(--tx3); font-size:12.5px }
 .ei { width:40px; height:40px; border-radius:10px; background:var(--raised); border:1px solid var(--b1); display:flex; align-items:center; justify-content:center; margin:0 auto 10px }
@@ -1009,6 +1055,17 @@ td:first-child {
 
       <!-- FORMA -->
       <div class="sp active" id="sp-forma">
+        <div class="mpick-bar">
+          <div class="mpick-bar-left">
+            <span class="dash-mpick-label">Mês da planilha:</span>
+            <div class="mpick" id="mpick-forma">
+              <button class="mpick-arr" onclick="changeSheetMonth('forma',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <span class="mpick-label" id="mpick-forma-label">—</span>
+              <button class="mpick-arr" onclick="changeSheetMonth('forma',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
+            <span class="mpick-badge" id="mpick-forma-badge">0 registros</span>
+          </div>
+        </div>
         <div class="metrics">
           <div class="mc mc-em"><div class="mi"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div class="ml">Total</div><div class="mv" id="sf-total">0</div><div class="ms">registros</div></div>
           <div class="mc mc-a1"><div class="mi"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="ml">Pedidos</div><div class="mv" id="sf-ped">0</div><div class="ms">cadastrados</div></div>
@@ -1052,6 +1109,17 @@ td:first-child {
 
       <!-- ARGAMASSA -->
       <div class="sp" id="sp-argamassa">
+        <div class="mpick-bar">
+          <div class="mpick-bar-left">
+            <span class="dash-mpick-label">Mês da planilha:</span>
+            <div class="mpick" id="mpick-argamassa">
+              <button class="mpick-arr" onclick="changeSheetMonth('argamassa',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <span class="mpick-label" id="mpick-argamassa-label">—</span>
+              <button class="mpick-arr" onclick="changeSheetMonth('argamassa',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
+            <span class="mpick-badge" id="mpick-argamassa-badge">0 registros</span>
+          </div>
+        </div>
         <div class="metrics">
           <div class="mc mc-em"><div class="mi"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div><div class="ml">Total</div><div class="mv" id="sa-total">0</div><div class="ms">registros</div></div>
           <div class="mc mc-a4"><div class="mi"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="ml">Valor Total</div><div class="mv" id="sa-val" style="font-size:18px;padding-top:2px">R$0</div><div class="ms">somado</div></div>
@@ -1081,6 +1149,17 @@ td:first-child {
 
       <!-- PROJETOS -->
       <div class="sp" id="sp-projetos">
+        <div class="mpick-bar">
+          <div class="mpick-bar-left">
+            <span class="dash-mpick-label">Mês da planilha:</span>
+            <div class="mpick" id="mpick-projetos">
+              <button class="mpick-arr" onclick="changeSheetMonth('projetos',-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+              <span class="mpick-label" id="mpick-projetos-label">—</span>
+              <button class="mpick-arr" onclick="changeSheetMonth('projetos',1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+            </div>
+            <span class="mpick-badge" id="mpick-projetos-badge">0 registros</span>
+          </div>
+        </div>
         <div class="metrics">
           <div class="mc mc-em"><div class="mi"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div><div class="ml">Total</div><div class="mv" id="sp-total">0</div><div class="ms">projetos</div></div>
           <div class="mc mc-a4"><div class="mi"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="ml">Valor Total</div><div class="mv" id="sp-val" style="font-size:18px;padding-top:2px">R$0</div><div class="ms">carteira</div></div>
@@ -1115,6 +1194,15 @@ td:first-child {
       <div class="ph">
         <div><div class="ph-title">Dashboard</div><div class="ph-sub">Análises interativas — clique nas legendas para filtrar</div></div>
         <button class="btn btn-ghost btn-sm" onclick="refreshCharts()"><svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>Atualizar</button>
+      </div>
+      <div class="dash-mpick-row">
+        <span class="dash-mpick-label">Mês do dashboard:</span>
+        <div class="mpick" id="mpick-dash">
+          <button class="mpick-arr" onclick="changeDashMonth(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <span class="mpick-label" id="mpick-dash-label">—</span>
+          <button class="mpick-arr" onclick="changeDashMonth(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <span class="mpick-badge" id="mpick-dash-badge"></span>
       </div>
       <div class="kpi-grid">
         <div class="kpi kpi-em"><div class="kpi-ico" style="background:var(--em-a)"><svg viewBox="0 0 24 24" style="stroke:var(--em)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><div class="kpi-lbl">Total</div><div class="kpi-v" style="color:var(--em)" id="k-total">0</div><div class="kpi-s">registros</div></div></div>
@@ -1363,33 +1451,59 @@ td:first-child {
 //  TASKGRID — Core Logic (all functionality preserved)
 // ══════════════════════════════════════════════════════
 
-const DB_KEY='taskgrid_db';
-const db={forma:[],argamassa:[],projetos:[]};
+const DB_KEY='taskgrid_db_v2';
+// db['YYYY-MM'] = { forma:[], argamassa:[], projetos:[] }
+const db={};
+
+const MONTH_NAMES=['Janeiro','Fevereiro','Marco','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const MONTH_SHORT=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+const _now=new Date();
+const _thisMonth=`${_now.getFullYear()}-${String(_now.getMonth()+1).padStart(2,'0')}`;
+let sheetMonth={forma:_thisMonth,argamassa:_thisMonth,projetos:_thisMonth};
+let dashMonth=_thisMonth;
+
+function ensureMonth(ym){if(!db[ym])db[ym]={forma:[],argamassa:[],projetos:[]};return db[ym]}
+function dbS(s,ym){return ensureMonth(ym||sheetMonth[s])[s]}
+function dbD(s){return ensureMonth(dashMonth)[s]}
+
 let cpS=null,cpId=null,ceS=null,ceId=null,pPdfs=[],cvPdf=null,dFilt='all';
 const CH={};
 const UF_LIST=['AC','AL','AP','AM','BA','CE','DF','ES','GO','MA','MT','MS','MG','PA','PB','PR','PE','PI','RJ','RN','RS','RO','RR','SC','SP','SE','TO'];
 
-// ── LOCAL STORAGE ──
+// -- LOCAL STORAGE --
 function saveDB(){
   try{
-    // PDFs com blob URLs não persistem entre sessões — salva apenas metadados (nome + tamanho)
     const snapshot={};
-    ['forma','argamassa','projetos'].forEach(s=>{
-      snapshot[s]=db[s].map(r=>({
-        ...r,
-        pdfs:(r.pdfs||[]).map(f=>({name:f.name,size:f.size}))
-      }));
+    Object.keys(db).forEach(ym=>{
+      snapshot[ym]={};
+      ['forma','argamassa','projetos'].forEach(s=>{
+        snapshot[ym][s]=(db[ym][s]||[]).map(r=>({...r,pdfs:(r.pdfs||[]).map(f=>({name:f.name,size:f.size}))}));
+      });
     });
     localStorage.setItem(DB_KEY,JSON.stringify(snapshot));
   }catch(e){console.warn('saveDB error',e)}
 }
 function loadDB(){
   try{
+    const oldRaw=localStorage.getItem('taskgrid_db');
+    if(oldRaw){
+      const old=JSON.parse(oldRaw);
+      ensureMonth(_thisMonth);
+      ['forma','argamassa','projetos'].forEach(s=>{
+        if(Array.isArray(old[s]))db[_thisMonth][s]=old[s].map(r=>({...r,pdfs:(r.pdfs||[])}));
+      });
+      localStorage.removeItem('taskgrid_db');
+      saveDB();
+    }
     const raw=localStorage.getItem(DB_KEY);
     if(!raw)return;
     const saved=JSON.parse(raw);
-    ['forma','argamassa','projetos'].forEach(s=>{
-      if(Array.isArray(saved[s]))db[s]=saved[s].map(r=>({...r,pdfs:(r.pdfs||[])}));
+    Object.keys(saved).forEach(ym=>{
+      ensureMonth(ym);
+      ['forma','argamassa','projetos'].forEach(s=>{
+        if(Array.isArray(saved[ym][s]))db[ym][s]=saved[ym][s].map(r=>({...r,pdfs:(r.pdfs||[])}));
+      });
     });
   }catch(e){console.warn('loadDB error',e)}
 }
@@ -1531,7 +1645,44 @@ function addRow(s){
     r.nome=g('fp-n');r.pedido=g('fp-p')||'—';r.valor=parseFloat(g('fp-v'))||0;r.data=g('fp-d');
     clr(['fp-n','fp-p','fp-v','fp-d']);
   }
-  db[s].push(r);tog(s);render(s);updStats(s);updBadge();saveDB();toast('Registro adicionado!');
+  dbS(s).push(r);tog(s);render(s);updStats(s);updBadge();saveDB();toast('Registro adicionado!');
+}
+
+
+// ── MONTH NAVIGATION ──
+function ymToLabel(ym){
+  const[y,m]=ym.split('-');
+  return MONTH_SHORT[parseInt(m)-1]+'/'+y;
+}
+function ymStep(ym,delta){
+  const[y,m]=ym.split('-').map(Number);
+  const d=new Date(y,m-1+delta,1);
+  return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+}
+function updateSheetMonthUI(s){
+  const ym=sheetMonth[s];
+  const el=document.getElementById('mpick-'+s+'-label');
+  const badge=document.getElementById('mpick-'+s+'-badge');
+  if(el)el.textContent=ymToLabel(ym);
+  if(badge)badge.textContent=dbS(s).length+' registros';
+}
+function changeSheetMonth(s,delta){
+  sheetMonth[s]=ymStep(sheetMonth[s],delta);
+  updateSheetMonthUI(s);
+  render(s);updStats(s);
+}
+function updateDashMonthUI(){
+  const ym=dashMonth;
+  const el=document.getElementById('mpick-dash-label');
+  const badge=document.getElementById('mpick-dash-badge');
+  const tot=dbD('forma').length+dbD('argamassa').length+dbD('projetos').length;
+  if(el)el.textContent=ymToLabel(ym);
+  if(badge)badge.textContent=tot+' registros';
+}
+function changeDashMonth(delta){
+  dashMonth=ymStep(dashMonth,delta);
+  updateDashMonthUI();
+  refreshCharts();
 }
 
 // ── RENDER ──
@@ -1559,27 +1710,28 @@ function buildRow(s,r,i){
 }
 function render(s){
   const tb=document.getElementById('tb-'+s);
-  document.getElementById('cnt-'+s).textContent=db[s].length;
+  document.getElementById('cnt-'+s).textContent=dbS(s).length;
   const cols={forma:9,argamassa:6,projetos:7}[s];
-  if(!db[s].length){tb.innerHTML=`<tr class="er"><td colspan="${cols}"><div class="ei"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>Nenhum registro. Clique em Adicionar.</td></tr>`;return}
-  tb.innerHTML=db[s].map((r,i)=>buildRow(s,r,i+1)).join('');
+  if(!dbS(s).length){tb.innerHTML=`<tr class="er"><td colspan="${cols}"><div class="ei"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>Nenhum registro. Clique em Adicionar.</td></tr>`;return}
+  tb.innerHTML=dbS(s).map((r,i)=>buildRow(s,r,i+1)).join('');
+  updateSheetMonthUI(s);
 }
 
 // ── STATS ──
 const setEl=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
 function updStats(s){
-  const rows=db[s],wp=rows.filter(r=>r.pdfs?.length).length;
+  const rows=dbS(s),wp=rows.filter(r=>r.pdfs?.length).length;
   const now=new Date(),mes=rows.filter(r=>{if(!r.data)return false;const d=new Date(r.data);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear()}).length;
   if(s==='forma'){setEl('sf-total',rows.length);setEl('sf-ped',rows.filter(r=>r.pedido&&r.pedido!=='—').length);setEl('sf-qty',rows.reduce((a,r)=>a+(r.qty||0),0));setEl('sf-pdf',wp);setEl('sf-resp',new Set(rows.map(r=>r.resp).filter(r=>r&&r!=='—')).size)}
   else if(s==='argamassa'){setEl('sa-total',rows.length);setEl('sa-val',fV(rows.reduce((a,r)=>a+(r.valor||0),0)));setEl('sa-pdf',wp);setEl('sa-mes',mes)}
   else{setEl('sp-total',rows.length);setEl('sp-val',fV(rows.reduce((a,r)=>a+(r.valor||0),0)));setEl('sp-pdf',wp);setEl('sp-ped',rows.filter(r=>r.pedido&&r.pedido!=='—').length)}
 }
-function updBadge(){const t=[...db.forma,...db.argamassa,...db.projetos].reduce((a,r)=>a+(r.pdfs?.length||0),0);setEl('dbadge',t)}
-function delRow(s,id){db[s]=db[s].filter(r=>r.id!=id);render(s);updStats(s);updBadge();saveDB();renderDocs();toast('Excluído.')}
+function updBadge(){const allR=Object.values(db).flatMap(m=>[...m.forma,...m.argamassa,...m.projetos]);const t=allR.reduce((a,r)=>a+(r.pdfs?.length||0),0);setEl('dbadge',t)}
+function delRow(s,id){const ym=sheetMonth[s];ensureMonth(ym)[s]=dbS(s).filter(r=>r.id!=id);render(s);updStats(s);updBadge();saveDB();renderDocs();toast('Excluído.')}
 function filt(s,q){document.querySelectorAll(`#tb-${s} tr:not(.er)`).forEach(tr=>{tr.style.display=tr.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'})}
 
 // ── PDF MODAL ──
-function openPM(s,id){cpS=s;cpId=id;const rec=db[s].find(r=>r.id==id);document.getElementById('pt').textContent=`PDFs — ${rec.nome}`;pPdfs=[...(rec.pdfs||[])];renderPL();document.getElementById('pov').classList.add('open')}
+function openPM(s,id){cpS=s;cpId=id;const rec=dbS(s).find(r=>r.id==id);document.getElementById('pt').textContent=`PDFs — ${rec.nome}`;pPdfs=[...(rec.pdfs||[])];renderPL();document.getElementById('pov').classList.add('open')}
 function closePM(){document.getElementById('pov').classList.remove('open');pPdfs=[];cpS=null;cpId=null}
 function hFile(files){Array.from(files).forEach(f=>{if(f.type==='application/pdf')pPdfs.push({name:f.name,size:f.size,url:URL.createObjectURL(f)})});renderPL()}
 function hDrop(e){e.preventDefault();document.getElementById('dzz').classList.remove('drag');hFile(e.dataTransfer.files)}
@@ -1597,7 +1749,7 @@ function renderPL(){
     </div>`).join('');
 }
 function rmPdf(i){pPdfs.splice(i,1);renderPL()}
-function savePdfs(){db[cpS].find(r=>r.id==cpId).pdfs=[...pPdfs];render(cpS);updStats(cpS);updBadge();saveDB();renderDocs();closePM();toast('PDFs salvos!')}
+function savePdfs(){dbS(cpS).find(r=>r.id==cpId).pdfs=[...pPdfs];render(cpS);updStats(cpS);updBadge();saveDB();renderDocs();closePM();toast('PDFs salvos!')}
 
 // ── VIEWER ──
 function openV(f){cvPdf=f;document.getElementById('vtitle').textContent=f.name;const b=document.getElementById('vbody');b.innerHTML=f.url?`<iframe src="${f.url}" title="${esc(f.name)}"></iframe>`:`<div class="nopre"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><p>Pré-visualização indisponível</p></div>`;document.getElementById('vov').classList.add('open')}
@@ -1607,7 +1759,7 @@ function dl(f){if(!f?.url){toast('URL indisponível.',1);return}const a=document
 
 // ── EDIT MODAL ──
 function openEM(s,id){
-  ceS=s;ceId=id;const rec=db[s].find(r=>r.id==id);
+  ceS=s;ceId=id;const rec=dbS(s).find(r=>r.id==id);
   const b=document.getElementById('emb');const e=k=>esc(rec[k]||'');
   const ufSel=UF_LIST.map(u=>`<option${rec.uf===u?' selected':''}>${u}</option>`).join('');
   if(s==='forma')b.innerHTML=`<label>Nome<input class="fi" id="en" value="${e('nome')}"></label><label>Pedido<input class="fi" id="ep" value="${rec.pedido!=='—'?e('pedido'):''}"></label><label>QTD<input class="fi" id="eq" type="number" value="${rec.qty||0}" min="0"></label><label>UF<select class="fs" id="eu" style="width:100%"><option value="">—</option>${ufSel}</select></label><label>Responsável<input class="fi" id="er" value="${rec.resp!=='—'?e('resp'):''}"></label><label>Data<input class="fi" id="ed" type="date" value="${rec.data||''}"></label>`;
@@ -1618,7 +1770,7 @@ function openEM(s,id){
 }
 function closeEM(){document.getElementById('eov').classList.remove('open')}
 function saveEdit(){
-  const rec=db[ceS].find(r=>r.id==ceId);
+  const rec=dbS(ceS).find(r=>r.id==ceId);
   const g=id=>document.getElementById(id)?.value.trim()||'';
   rec.nome=g('en')||rec.nome;
   if(ceS==='forma'){rec.pedido=g('ep')||'—';rec.qty=parseInt(g('eq'))||0;rec.uf=g('eu')||'—';rec.resp=g('er')||'—';rec.data=g('ed')}
@@ -1634,7 +1786,7 @@ function renderDocs(){
   const q=(document.getElementById('dsq')?.value||'').toLowerCase();
   const g=document.getElementById('dgrid');
   let all=[];
-  ['forma','argamassa','projetos'].forEach(s=>{db[s].forEach(rec=>{(rec.pdfs||[]).forEach(f=>{all.push({...f,rn:rec.nome,src:s})})})});
+  ['forma','argamassa','projetos'].forEach(s=>{Object.values(db).forEach(m=>{(m[s]||[]).forEach(rec=>{(rec.pdfs||[]).forEach(f=>{all.push({...f,rn:rec.nome,src:s})})})})}); 
   if(dFilt!=='all')all=all.filter(d=>d.src===dFilt);
   if(q)all=all.filter(d=>d.name.toLowerCase().includes(q)||d.rn.toLowerCase().includes(q));
   if(!all.length){g.innerHTML=`<div class="dempty"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><p>Nenhum documento.<br><small>Anexe PDFs nos registros.</small></p></div>`;return}
@@ -1674,54 +1826,55 @@ function pO(){const o=dO();delete o.cutout;return o}
 function setV(v){document.querySelectorAll('.cv-panel').forEach(e=>e.classList.remove('active'));const e=document.getElementById('cv-'+v);if(e)e.classList.add('active');refreshCharts()}
 
 function refreshCharts(){
-  const vp=db.projetos.reduce((a,r)=>a+(r.valor||0),0);
-  const va=db.argamassa.reduce((a,r)=>a+(r.valor||0),0);
-  const tot=db.forma.length+db.argamassa.length+db.projetos.length;
-  const qty=db.forma.reduce((a,r)=>a+(r.qty||0),0);
-  const pdfs=[...db.forma,...db.argamassa,...db.projetos].filter(r=>r.pdfs?.length).length;
+  const vp=dbD('projetos').reduce((a,r)=>a+(r.valor||0),0);
+  const va=dbD('argamassa').reduce((a,r)=>a+(r.valor||0),0);
+  const tot=dbD('forma').length+dbD('argamassa').length+dbD('projetos').length;
+  const qty=dbD('forma').reduce((a,r)=>a+(r.qty||0),0);
+  const pdfs=[...dbD('forma'),...dbD('argamassa'),...dbD('projetos')].filter(r=>r.pdfs?.length).length;
   setEl('k-total',tot);setEl('k-vproj',fS(vp));setEl('k-varg',fS(va));
   setEl('k-qty',qty);setEl('k-pdf',pdfs);setEl('k-vtot',fS(vp+va));
   const v=document.getElementById('csel')?.value||'ov';
+  updateDashMonthUI();
   if(v==='ov')dOv();else if(v==='fm')dFm();else if(v==='fi')dFi();else dTm();
 }
 
 function dOv(){
   const t=gTC();const em=currentColor1;const c2=currentColor2;
   const AP2=getAP();
-  mk('ch-dist',{type:'bar',data:{labels:['Forma','Argamassa','Projetos'],datasets:[{label:'Registros',data:[db.forma.length,db.argamassa.length,db.projetos.length],backgroundColor:[AP2[0],AP2[1],AP2[2]],borderRadius:8,borderSkipped:false}]},options:nLO()});
-  mk('ch-prop',{type:'doughnut',data:{labels:['Forma','Argamassa','Projetos'],datasets:[{data:[db.forma.length,db.argamassa.length,db.projetos.length],backgroundColor:[AP2[0],AP2[1],AP2[2]],borderWidth:0,hoverOffset:10}]},options:dO()});
-  const fp=db.forma.filter(r=>r.pdfs?.length).length,ap=db.argamassa.filter(r=>r.pdfs?.length).length,pp=db.projetos.filter(r=>r.pdfs?.length).length;
+  mk('ch-dist',{type:'bar',data:{labels:['Forma','Argamassa','Projetos'],datasets:[{label:'Registros',data:[dbD('forma').length,dbD('argamassa').length,dbD('projetos').length],backgroundColor:[AP2[0],AP2[1],AP2[2]],borderRadius:8,borderSkipped:false}]},options:nLO()});
+  mk('ch-prop',{type:'doughnut',data:{labels:['Forma','Argamassa','Projetos'],datasets:[{data:[dbD('forma').length,dbD('argamassa').length,dbD('projetos').length],backgroundColor:[AP2[0],AP2[1],AP2[2]],borderWidth:0,hoverOffset:10}]},options:dO()});
+  const fp=dbD('forma').filter(r=>r.pdfs?.length).length,ap=dbD('argamassa').filter(r=>r.pdfs?.length).length,pp=dbD('projetos').filter(r=>r.pdfs?.length).length;
   const rgb1=hexToRgb(em),rgb2=hexToRgb(c2);
   mk('ch-polar',{type:'polarArea',data:{labels:['Forma','Argamassa','Projetos'],datasets:[{data:[fp,ap,pp],backgroundColor:[`rgba(${rgb1.r},${rgb1.g},${rgb1.b},.38)`,`rgba(${rgb2.r},${rgb2.g},${rgb2.b},.35)`,AP2[2].replace('.78','.35')],borderColor:[em,c2,AP2[2].replace('.78','1')],borderWidth:1.5}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:500},plugins:{legend:{position:'bottom',labels:{color:t.tick,font:{size:10,family:'Outfit'},padding:12,boxWidth:10}},tooltip:t.tt},scales:{r:{grid:{color:t.grid},ticks:{color:t.tick,backdropColor:'transparent',font:{size:10}}}}}});
-  const vp2=db.projetos.reduce((a,r)=>a+(r.valor||0),0),va2=db.argamassa.reduce((a,r)=>a+(r.valor||0),0);
+  const vp2=dbD('projetos').reduce((a,r)=>a+(r.valor||0),0),va2=dbD('argamassa').reduce((a,r)=>a+(r.valor||0),0);
   const o=nLO();o.scales.y.ticks={...o.scales.y.ticks,callback:v=>fS(v)};
   mk('ch-fin2',{type:'bar',data:{labels:['Projetos','Argamassa'],datasets:[{label:'Valor',data:[vp2,va2],backgroundColor:[AP2[3],AP2[1]],borderRadius:9,borderSkipped:false}]},options:o});
 }
 function dFm(){
   const AP2=getAP();
-  const lb=db.forma.map(r=>r.nome.length>18?r.nome.slice(0,18)+'…':r.nome),vl=db.forma.map(r=>r.qty||0);
+  const lb=dbD('forma').map(r=>r.nome.length>18?r.nome.slice(0,18)+'…':r.nome),vl=dbD('forma').map(r=>r.qty||0);
   const o=nLO();o.indexAxis='y';
   mk('ch-fqty',{type:'bar',data:{labels:lb.length?lb:['—'],datasets:[{label:'QTD',data:vl.length?vl:[0],backgroundColor:pal(lb.length||1),borderRadius:6,borderSkipped:false}]},options:o});
-  const ufm={};db.forma.forEach(r=>{const k=r.uf&&r.uf!=='—'?r.uf:'—';ufm[k]=(ufm[k]||0)+1});
+  const ufm={};dbD('forma').forEach(r=>{const k=r.uf&&r.uf!=='—'?r.uf:'—';ufm[k]=(ufm[k]||0)+1});
   mk('ch-fuf',{type:'pie',data:{labels:Object.keys(ufm),datasets:[{data:Object.values(ufm),backgroundColor:pal(Object.keys(ufm).length),borderWidth:0,hoverOffset:10}]},options:pO()});
-  const rm={};db.forma.forEach(r=>{const k=r.resp&&r.resp!=='—'?r.resp:'Indef.';rm[k]=(rm[k]||0)+(r.qty||0)});
+  const rm={};dbD('forma').forEach(r=>{const k=r.resp&&r.resp!=='—'?r.resp:'Indef.';rm[k]=(rm[k]||0)+(r.qty||0)});
   mk('ch-fresp',{type:'bar',data:{labels:Object.keys(rm).length?Object.keys(rm):['—'],datasets:[{label:'QTD',data:Object.values(rm).length?Object.values(rm):[0],backgroundColor:pal(Object.keys(rm).length||1),borderRadius:7,borderSkipped:false}]},options:nLO()});
-  const cp=db.forma.filter(r=>r.pedido&&r.pedido!=='—').length,sp=db.forma.length-cp;
+  const cp=dbD('forma').filter(r=>r.pedido&&r.pedido!=='—').length,sp=dbD('forma').length-cp;
   mk('ch-fped',{type:'doughnut',data:{labels:['Com Pedido','Sem Pedido'],datasets:[{data:[cp,sp],backgroundColor:[AP2[0],AP2[2]],borderWidth:0,hoverOffset:10}]},options:dO()});
 }
 function dFi(){
   const AP2=getAP();
-  const pl=db.projetos.map(r=>r.nome.length>14?r.nome.slice(0,14)+'…':r.nome),pv=db.projetos.map(r=>r.valor||0);
+  const pl=dbD('projetos').map(r=>r.nome.length>14?r.nome.slice(0,14)+'…':r.nome),pv=dbD('projetos').map(r=>r.valor||0);
   const o=nLO();o.scales.y.ticks={...o.scales.y.ticks,callback:v=>fS(v)};
   mk('ch-pval',{type:'bar',data:{labels:pl.length?pl:['—'],datasets:[{label:'Valor',data:pv.length?pv:[0],backgroundColor:AP2[3],borderRadius:9,borderSkipped:false}]},options:o});
-  const al=db.argamassa.map(r=>r.nome.length>12?r.nome.slice(0,12)+'…':r.nome),av=db.argamassa.map(r=>r.valor||0);
+  const al=dbD('argamassa').map(r=>r.nome.length>12?r.nome.slice(0,12)+'…':r.nome),av=dbD('argamassa').map(r=>r.valor||0);
   mk('ch-aval',{type:'pie',data:{labels:al.length?al:['—'],datasets:[{data:av.length?av:[1],backgroundColor:pal(al.length||1),borderWidth:0,hoverOffset:10}]},options:pO()});
-  const ta=db.argamassa.reduce((a,r)=>a+(r.valor||0),0),tp=db.projetos.reduce((a,r)=>a+(r.valor||0),0);
+  const ta=dbD('argamassa').reduce((a,r)=>a+(r.valor||0),0),tp=dbD('projetos').reduce((a,r)=>a+(r.valor||0),0);
   mk('ch-cmod',{type:'doughnut',data:{labels:['Argamassa','Projetos'],datasets:[{data:[ta,tp],backgroundColor:[AP2[1],AP2[0]],borderWidth:0,hoverOffset:10}]},options:dO()});
 }
 function dTm(){
   const AP2=getAP();
-  const all=[...db.forma.map(r=>({d:r.data,m:'Forma'})),...db.argamassa.map(r=>({d:r.data,m:'Argamassa'})),...db.projetos.map(r=>({d:r.data,m:'Projetos'}))].filter(r=>r.d);
+  const _allMonths=Object.values(db);const all=[..._allMonths.flatMap(m=>m.forma.map(r=>({d:r.data,m:'Forma'}))),..._allMonths.flatMap(m=>m.argamassa.map(r=>({d:r.data,m:'Argamassa'}))),..._allMonths.flatMap(m=>m.projetos.map(r=>({d:r.data,m:'Projetos'})))].filter(r=>r.d);
   const months={};all.forEach(r=>{const[y,m]=r.d.split('-');const k=`${y}-${m}`;if(!months[k])months[k]={Forma:0,Argamassa:0,Projetos:0};months[k][r.m]++});
   const keys=Object.keys(months).sort();
   const MN=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
@@ -1750,7 +1903,12 @@ document.querySelectorAll('.ovl').forEach(o=>o.addEventListener('click',e=>{
 }));
 
 // ── INIT ──
-['forma','argamassa','projetos'].forEach(s=>{render(s);updStats(s)});
+['forma','argamassa','projetos'].forEach(s=>{
+  ensureMonth(sheetMonth[s]);
+  updateSheetMonthUI(s);
+  render(s);updStats(s);
+});
+updateDashMonthUI();
 updBadge();
 applyBrandColors(currentColor1,currentColor2);
 </script>
